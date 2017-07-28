@@ -1,0 +1,37 @@
+那怎么才能设计出灵活的登录呢？
+
+不妨换个角度考虑用户登录。当用户以任意一种方式登录成功后，我们读取到的总是Users表对应的一行记录，它实际上是用户的个人资料（Profile），而登录过程只是为了认证用户（Authenticate），无论是本地用密码验证，还是委托第三方登录，这个过程本质上都是认证。
+
+所以，如果把Profile和Authenticate分开，就十分容易理解了。Users表本身只存储用户的Profile：
+
+
+
+user
+id name mobile birth
+
+ localauth
+ id | user_id | username | password
+ 
+OAuth
+id | user_id | oauth_name | oauth_id | oauth_access_token | oauth_expires
+   
+   
+   
+API Auth
+id | user_id | api_key  | api_secret
+
+20170518  完成 页面登录  tonken   
+
+20170522  druid  spring   docker
+
+
+单独登录服务
+  
+  
+  
+  权限管理
+  
+  
+  
+  
+  cloud

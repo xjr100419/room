@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>登录</title>
+</head>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var submit = function(){
+		var data = $("#loginform").serializeArray();
+		var username = $("#username").val();
+		var password = $("#password").val();
+		$.ajax({
+			   headers: {
+				   Authorization: username+","+password
+			    },
+			   type: "POST",
+			   url: "/loginPost",
+			   data: [],
+			   success: function(msg){
+			     alert(  msg.message );
+			     window.location.href='/';
+			   }
+			});
+	}
+	
+	$("#submit").click(function(){
+		submit();
+		
+	});
+})
+</script>
+<body>
+    <h1>登录</h1>
+    <form id="loginform" action="">
+      账号：<input id = "username" name = "username" type="text" > <br>
+      密码：<input id = "password" name = "password" type="text" >
+    </form>
+  <input id="submit" type="button" value="登录">
+    
+</body>
+</html>
